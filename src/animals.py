@@ -1,4 +1,4 @@
-from files import generate_id,write_file
+from files import generate_id,write_file,print_formatted_data
 
 class Animal:
     def __init__(self,specie, age, weight, status,animal_id = None):
@@ -25,6 +25,11 @@ class Animal:
         write_file("animals.json", animal.__dict__)
 
     @staticmethod
+    def print_all_animals():
+        print_formatted_data("animals.json")
+        
+
+    @staticmethod
     def animals_menu():
         while True:
             
@@ -46,7 +51,7 @@ class Animal:
                     pass
 
                 case 3:
-                    pass
+                    Animal.print_all_animals()
 
                 case 4:
                     pass
