@@ -1,4 +1,5 @@
 from files import generate_id,write_file
+
 class Animal:
     def __init__(self,specie, age, weight, status,animal_id = None):
         self.animal_id = animal_id
@@ -22,3 +23,33 @@ class Animal:
         
         animal = cls(specie, age, weight, status, animal_id)
         write_file("animals.json", animal.__dict__)
+
+    @staticmethod
+    def animals_menu():
+        while True:
+            
+            print("=" * 50)
+            print(" " * 15 + "Animais" + " " * 15 )
+            print("=" * 50)
+            print("[1] Cadastrar animal\n[2] Editar animal\n[3] Relatorio \n[4] " \
+            "Pesquisar\n[0] Voltar")
+            asw = int(input(">>> "))
+
+            match asw:
+                case 0:
+                    break
+                
+                case 1:
+                    Animal.create_animal()
+                    
+                case 2:
+                    pass
+
+                case 3:
+                    pass
+
+                case 4:
+                    pass
+                
+                case _:
+                    print("Digite uma opção valida")
