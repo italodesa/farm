@@ -30,3 +30,17 @@ def view_datas(a_path):
             all_data = json.load(f)
 
     return all_data
+
+def generate_id(a_path,id_object):
+# Função que gera Ids únicos para os objetos
+
+        path = verify(a_path)
+        all_data = view_datas(path)
+
+        if all_data:
+        # Pega o maior ID e soma 1
+            next_id = max(a[id_object] for a in all_data) + 1
+        else:
+            next_id = 1  # Primeiro ID
+
+        return next_id
