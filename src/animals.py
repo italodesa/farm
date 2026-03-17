@@ -1,4 +1,4 @@
-from utils import generate_id,write_file
+from files import generate_id,write_file
 class Animal:
     def __init__(self,specie, age, weight, status,animal_id = None):
         self.animal_id = animal_id
