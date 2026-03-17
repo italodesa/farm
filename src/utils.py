@@ -1,4 +1,3 @@
-
 from pathlib import Path
 import json
 
@@ -21,3 +20,13 @@ def verify(path):
         
         #retorna o caminho do arquivo
         return DATA_FILE
+
+def view_datas(a_path):
+# Função que retorna o conteudo do arquivo argumentado
+
+    path = verify(a_path)
+
+    with open(path,"r",encoding="utf-8") as f:
+            all_data = json.load(f)
+
+    return all_data
