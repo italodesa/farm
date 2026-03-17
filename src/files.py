@@ -1,7 +1,6 @@
 from pathlib import Path
 import json
 
-
 def verify(path):
 # Função para verificação de arquivos
 
@@ -54,3 +53,13 @@ def write_file(a_path, data):
 
     with open(path,"w",encoding="utf-8") as f:
             json.dump(all_data, f, indent=4, ensure_ascii=False)
+
+def print_formatted_data(path):
+# Função para exibir o conteudo do arquivo em tabela
+    all_datas = view_datas(path)
+    for data in all_datas:
+        print(f"{'Campo':<10} | {'Valor':<10}")
+        print("-" * 22)
+        for chave, valor in data.items():
+            print(f"{chave:<10} | {valor:<10}")
+        print("\n")
