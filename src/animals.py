@@ -8,6 +8,13 @@ class Animal:
         self.weight = weight
         self.status = status
 
+    def view_animal(self):
+        print(f"ID: {self.animal_id}")
+        print(f"Especie: {self.specie}")
+        print(f"Idade: {self.age}")
+        print(f"Peso: {self.weight}")
+        print(f"Status: {self.status}")
+
     @classmethod
     def create_animal(cls):
         while True:
