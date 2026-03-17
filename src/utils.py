@@ -44,3 +44,13 @@ def generate_id(a_path,id_object):
             next_id = 1  # Primeiro ID
 
         return next_id
+
+def write_file(a_path, data):
+# Função para escrever dados no arquivo
+
+    path = verify(a_path)
+    all_data = view_datas(a_path)
+    all_data.append(data)
+
+    with open(path,"w",encoding="utf-8") as f:
+            json.dump(all_data, f, indent=4, ensure_ascii=False)
