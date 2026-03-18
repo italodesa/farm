@@ -46,6 +46,47 @@ class Plantation:
         
         write_file("plants.json", plantation.__dict__)
 
+    @staticmethod
+    def plants_menu():
+        while True:
+            print("=" * 50)
+            print(" " * 15 + "Sistema de plantações" + " " * 15 )
+            print("=" * 50)
+
+            print("[1] Criar plantação\n[2] Listar plantações\n[3] Atualizar status\n"
+            "[4] Remover plantação\n[5] Relatorios de plantação\n[6] Registro de movimentação\n"
+            "[7] Buscar plantações\n[0] Voltar")
+
+            asw = int(input(">>> "))
+
+            match asw:
+                case 0:
+                    break
+            
+                case 1:
+                    Plantation.create_plantation()
+
+
+                case 2:
+                    pass
+
+                case 3:
+                    pass
+
+                case 4:
+                    pass
+
+                case 5:
+                    pass
+
+                case 6:
+                    pass
+
+                case 7:
+                    pass
+                case _:
+                    print("Digite uma opção valida")
+
 crops = {
     "milho": 120,
     "alface": 45,
