@@ -28,6 +28,15 @@ class Plantation:
         setattr(self, attribute, value)
         write_file("plants.json", self.__dict__)
 
+    def view_plantation(self):
+        print(f"ID: {self.plantation_id}")
+        print(f"Tipo de cultura: {self.crop_type}")
+        print(f"Área: {self.area} hectares")
+        print(f"Data de plantio: {self.planting_date}")
+        print(f"Data de colheita: {self.harvest_date}")
+        print(f"Status: {self.status}")
+        print("\n")
+
     @classmethod
     def create_plantation(cls):
         while True:
