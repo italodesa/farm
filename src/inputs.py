@@ -120,10 +120,16 @@ class Input:
                     delete_data("inputs.json", id,"input_id")
 
                 case 5:
-                    pass
+                    input_obj = Input.recover_input()
+                    if input_obj:
+                        quantity = float(input("Digite a quantidade a ser adicionada: "))
+                        input_obj.add_quantity(quantity)
 
                 case 6:
-                    pass
+                    input_obj = Input.recover_input()
+                    if input_obj:
+                        quantity = float(input("Digite a quantidade a ser retirada: "))
+                        input_obj.remove_quantity(quantity)
 
                 case 7:
                     Input.search_inputs()
