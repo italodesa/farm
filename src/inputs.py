@@ -24,4 +24,42 @@ class Input:
         input_object = cls(name, quantity, unit, category, input_id)
         write_file("inputs.json", input_object.__dict__)
 
-Input.create_input_object()
+    @staticmethod
+    def inputs_menu():
+        while True:
+            print("=" * 50)
+            print(" " * 15 + "Sistema de Insumos" + " " * 15 )
+            print("=" * 50)
+
+            print("[1] Criar insumo\n[2] Listar insumos\n[3] Atualizar insumo\n"
+            "[4] Remover insumo\n[5] Adicionar estoque\n[6] Retirar estoque\n"
+            "[7] Buscar insumos\n[0] Voltar")
+
+            asw = int(input(">>> "))
+
+            match asw:
+                case 0:
+                    break
+            
+                case 1:
+                    Input.create_input_object()
+
+                case 2:
+                    pass
+
+                case 3:
+                    pass
+
+                case 4:
+                    pass
+
+                case 5:
+                    pass
+
+                case 6:
+                    pass
+
+                case 7:
+                    pass
+                case _:
+                    print("Digite uma opção valida")
