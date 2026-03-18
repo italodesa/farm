@@ -48,6 +48,26 @@ class Input:
         print_formatted_data("inputs.json")
 
     @staticmethod
+    def search_inputs():
+        all_inputs = view_datas("inputs.json")
+        input_name = input("Digite o nome do insumo para buscar: ")
+        try:
+            input_id = int(input("Digite o ID do insumo para buscar: "))
+
+            for input_item in all_inputs:
+                if input_item.get("name") == input_name or input_item.get("input_id") == input_id:
+                    print(f"{'Campo':<15} | {'Valor':<15}")
+                    print("-" * 32)
+                    for chave, valor in input_item.items():
+                        print(f"{chave:<15} | {valor:<15}")
+                    print("\n")
+
+        except ValueError:
+            print("Entrada inválida. Por favor, tente novamente.")
+        except UnboundLocalError:
+            print("Nenhum insumo encontrado com os critérios fornecidos.")
+
+    @staticmethod
     def inputs_menu():
         while True:
             print("=" * 50)
@@ -84,6 +104,6 @@ class Input:
                     pass
 
                 case 7:
-                    pass
+                    Input.search_inputs()
                 case _:
                     print("Digite uma opção valida")
