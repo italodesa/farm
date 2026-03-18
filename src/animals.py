@@ -15,6 +15,11 @@ class Animal:
         print(f"Peso: {self.weight}")
         print(f"Status: {self.status}")
 
+    def edit_animal(self,attribute,value):
+        delete_data("animals.json", self.animal_id, "animal_id")
+        setattr(self, attribute, value)
+        write_file("animals.json", self.__dict__)
+
     @classmethod
     def create_animal(cls):
         while True:
