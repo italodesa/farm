@@ -71,3 +71,16 @@ def recover_obj_data(a_path, obj_id, id_attribute):
         if obj.get(id_attribute) == obj_id:
             return obj
     return None
+
+def delete_data(a_path, obj_id, id_attribute):
+# Função que deleta um objeto do arquivo json
+    all_data = view_datas(a_path)
+    data_to_delete = recover_obj_data(a_path, obj_id, id_attribute)
+
+    if data_to_delete:
+        all_data.remove(data_to_delete)
+        path = verify(a_path)
+        with open(path,"w",encoding="utf-8") as f:
+            json.dump(all_data, f, indent=4, ensure_ascii=False)
+    else:
+         print("ID não encontrado. Nenhum dado foi deletado.")
