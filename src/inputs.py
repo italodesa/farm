@@ -55,7 +55,8 @@ class Input:
                     pass
 
                 case 4:
-                    pass
+                    id = int(input("Digite o ID do insumo a ser removido: "))
+                    delete_data("inputs.json", id,"input_id")
 
                 case 5:
                     pass
