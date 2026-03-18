@@ -48,6 +48,23 @@ class Input:
         input_object = cls(name, quantity, unit, category, input_id)
         write_file("inputs.json", input_object.__dict__)
 
+    @classmethod
+    def recover_input(cls):
+        id = int(input("Digite o ID do insumo: "))
+        input_data = recover_obj_data("inputs.json", id, "input_id")
+
+        if input_data:
+            return cls(
+                input_data["name"],
+                input_data["quantity"],
+                input_data["unit"],
+                input_data["category"],
+                input_data["input_id"]
+            )
+        else:
+            print("ID não encontrado.")
+            return None
+
     @staticmethod
     def print_all_inputs():
         print_formatted_data("inputs.json")
