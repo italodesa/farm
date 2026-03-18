@@ -77,7 +77,7 @@ class Animal:
                     Animal.create_animal()
                     
                 case 2:
-                    pass
+                    Animal.edit_animal_menu()
 
                 case 3:
                     Animal.print_all_animals()
@@ -93,28 +93,39 @@ class Animal:
     @staticmethod
     def edit_animal_menu():
         while True:
-            print("=" * 50)
-            print(" " * 15 + "Editar animal" + " " * 15 )
-            print("=" * 50)
-            print("[1] Editar especie\n[2] Editar" \
-            " idade\n[3] Editar peso\n[4] Editar status\n[0] Voltar")
-            asw = int(input(">>> "))
+            try:
+                print("=" * 50)
+                print(" " * 15 + "Editar animal" + " " * 15 )
+                print("=" * 50)
+                print("[1] Editar especie\n[2] Editar" \
+                " idade\n[3] Editar peso\n[4] Editar status\n[0] Voltar")
+                asw = int(input(">>> "))
 
-            match asw:
-                case 0:
-                    break
-                
-                case 1:
-                    pass
+                match asw:
+                    case 0:
+                        break
                     
-                case 2:
-                    pass
+                    case 1:
+                        animal = Animal.recover_animal()
+                        new_specie = input("Digite a nova especie: ")
+                        animal.edit_animal("specie", new_specie)
+                        
+                    case 2:
+                        animal = Animal.recover_animal()
+                        new_age = int(input("Digite a nova idade: "))
+                        animal.edit_animal("age", new_age)
 
-                case 3:
-                    pass
+                    case 3:
+                        animal = Animal.recover_animal()
+                        new_weight = float(input("Digite o novo peso: "))
+                        animal.edit_animal("weight", new_weight)
 
-                case 4:
-                    pass
-                
-                case _:
-                    print("Digite uma opção valida")
+                    case 4:
+                        animal = Animal.recover_animal()
+                        new_status = input("Digite o novo status: ")
+                        animal.edit_animal("status", new_status)
+
+                    case _:
+                        print("Digite uma opção valida")
+            except Exception:
+                print(f"Erro. O animal não existe. Por favor, tente novamente.")
