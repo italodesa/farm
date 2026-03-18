@@ -51,6 +51,23 @@ class Plantation:
         
         write_file("plants.json", plantation.__dict__)
 
+    @classmethod
+    def recover_plantation(cls):
+        id = int(input("Digite o ID da plantação: "))
+        plantation_data = recover_obj_data("plants.json", id, "plantation_id")
+
+        if plantation_data:
+            return cls(
+                plantation_data["crop_type"],
+                plantation_data["area"],
+                plantation_data["planting_date"],
+                plantation_data["status"],
+                plantation_data["plantation_id"]
+            )
+        else:
+            print("ID não encontrado.")
+            return None
+
     @staticmethod
     def print_all_plantations():
         print_formatted_data("plants.json")
@@ -80,7 +97,7 @@ class Plantation:
                     Plantation.print_all_plantations()
 
                 case 3:
-                    pass
+                    Plantation.edit_plantation_menu()
 
                 case 4:
                     pass
@@ -95,6 +112,46 @@ class Plantation:
                     pass
                 case _:
                     print("Digite uma opção valida")
+
+    @staticmethod
+    def edit_plantation_menu():
+        while True:
+            try:
+                print("=" * 50)
+                print(" " * 15 + "Editar plantação" + " " * 15 )
+                print("=" * 50)
+                print("[1] Editar tipo de cultura\n[2] Editar área\n[3] Editar " \
+                "data de plantio\n[4] Editar status\n[0] Voltar")
+                asw = int(input(">>> "))
+
+                match asw:
+                    case 0:
+                        break
+                    
+                    case 1:
+                        plantation = Plantation.recover_plantation()
+                        new_crop_type = input("Digite o novo tipo de cultura: ")
+                        plantation.edit_plantation("crop_type", new_crop_type)
+                        
+                    case 2:
+                        plantation = Plantation.recover_plantation()
+                        new_area = float(input("Digite a nova área: "))
+                        plantation.edit_plantation("area", new_area)
+
+                    case 3:
+                        plantation = Plantation.recover_plantation()
+                        new_planting_date = input("Digite a nova data de plantio: ")
+                        plantation.edit_plantation("planting_date", new_planting_date)
+
+                    case 4:
+                        plantation = Plantation.recover_plantation()
+                        new_status = input("Digite o novo status: ")
+                        plantation.edit_plantation("status", new_status)
+
+                    case _:
+                        print("Digite uma opção valida")
+            except Exception:
+                print(f"Erro. A plantação não existe. Por favor, tente novamente.")
 
 crops = {
     "milho": 120,
@@ -118,3 +175,5 @@ crops = {
     "berinjela": 110,
     "cana_de_acucar": 365
 }
+
+Plantation.plants_menu()
