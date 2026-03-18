@@ -27,6 +27,11 @@ class Input:
         self.quantity -= amount
         write_file("inputs.json", self.__dict__)
 
+    def edit_input(self, attribute, value):
+        delete_data("inputs.json", self.input_id, "input_id")
+        setattr(self, attribute, value)
+        write_file("inputs.json", self.__dict__)
+
     @classmethod
     def create_input_object(cls):
         while True:
