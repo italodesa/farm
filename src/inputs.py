@@ -107,3 +107,24 @@ class Input:
                     Input.search_inputs()
                 case _:
                     print("Digite uma opção valida")
+    
+    @staticmethod
+    def edit_input_menu():
+        while True:
+            print("=" * 50)
+            print(" " * 15 + "Editar Insumo" + " " * 15 )
+            print("=" * 50)
+            print("[1] Editar nome\n[2] Editar categoria\n[3] " \
+            "editar unidade de medida\n[0] Voltar")
+            asw = int(input(">>> "))
+            match asw:
+                case 0:
+                    break
+                case 1:
+                    new_name = input("digite o novo nome do insumo:")
+                case 2:
+                    new_category = input("digite a nova categoria do insumo: ")
+                case 3:
+                    new_unit = input("digite a nova unidade de medida do insumo: ")
+                case _:
+                    print("Digite uma opção valida")
