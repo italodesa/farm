@@ -25,6 +25,10 @@ class Input:
         write_file("inputs.json", input_object.__dict__)
 
     @staticmethod
+    def print_all_inputs():
+        print_formatted_data("inputs.json")
+
+    @staticmethod
     def inputs_menu():
         while True:
             print("=" * 50)
@@ -45,7 +49,7 @@ class Input:
                     Input.create_input_object()
 
                 case 2:
-                    pass
+                    Input.print_all_inputs()
 
                 case 3:
                     pass
