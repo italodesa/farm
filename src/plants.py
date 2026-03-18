@@ -100,7 +100,8 @@ class Plantation:
                     Plantation.edit_plantation_menu()
 
                 case 4:
-                    pass
+                    id = int(input("Digite o ID da plantação a ser deletada: "))
+                    delete_data("plants.json", id, "plantation_id")
 
                 case 5:
                     pass
@@ -175,5 +176,3 @@ crops = {
     "berinjela": 110,
     "cana_de_acucar": 365
 }
-
-Plantation.plants_menu()
