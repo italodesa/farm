@@ -82,3 +82,32 @@ class Animal:
                 
                 case _:
                     print("Digite uma opção valida")
+
+    @staticmethod
+    def edit_animal_menu():
+        while True:
+            print("=" * 50)
+            print(" " * 15 + "Editar animal" + " " * 15 )
+            print("=" * 50)
+            print("[1] Editar especie\n[2] Editar" \
+            " idade\n[3] Editar peso\n[4] Editar status\n[0] Voltar")
+            asw = int(input(">>> "))
+
+            match asw:
+                case 0:
+                    break
+                
+                case 1:
+                    pass
+                    
+                case 2:
+                    pass
+
+                case 3:
+                    pass
+
+                case 4:
+                    pass
+                
+                case _:
+                    print("Digite uma opção valida")
