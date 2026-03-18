@@ -22,6 +22,11 @@ class Plantation:
         harvest_date = planting_date + timedelta(days=days)
 
         return str(harvest_date.date())
+    
+    def edit_plantation(self,attribute,value):
+        delete_data("plants.json", self.plantation_id, "plantation_id")
+        setattr(self, attribute, value)
+        write_file("plants.json", self.__dict__)
 
     @classmethod
     def create_plantation(cls):
