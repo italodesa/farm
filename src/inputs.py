@@ -8,6 +8,25 @@ class Input:
         self.unit = unit
         self.category = category
 
+    def add_quantity(self, amount):
+        if amount < 0:
+            print("A quantidade a ser adicionada deve ser positiva.")
+            return
+        delete_data("inputs.json", self.input_id, "input_id")
+        self.quantity += amount
+        write_file("inputs.json", self.__dict__)
+
+    def remove_quantity(self, amount):
+        if amount < 0:
+            print("A quantidade a ser removida deve ser positiva.")
+            return
+        if amount > self.quantity:
+            print("Quantidade insuficiente no estoque.")
+            return
+        delete_data("inputs.json", self.input_id, "input_id")
+        self.quantity -= amount
+        write_file("inputs.json", self.__dict__)
+
     @classmethod
     def create_input_object(cls):
         while True:
