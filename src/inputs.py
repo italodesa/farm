@@ -113,7 +113,7 @@ class Input:
                     Input.print_all_inputs()
 
                 case 3:
-                    pass
+                    Input.edit_input_menu()
 
                 case 4:
                     id = int(input("Digite o ID do insumo a ser removido: "))
@@ -143,10 +143,19 @@ class Input:
                 case 0:
                     break
                 case 1:
-                    new_name = input("digite o novo nome do insumo:")
+                    input_obj = Input.recover_input()
+                    if input_obj:
+                        new_name = input("digite o novo nome do insumo:")
+                        input_obj.edit_input("name", new_name)
                 case 2:
-                    new_category = input("digite a nova categoria do insumo: ")
+                    input_obj = Input.recover_input()
+                    if input_obj:
+                        new_category = input("digite a nova categoria do insumo: ")
+                        input_obj.edit_input("category", new_category)
                 case 3:
-                    new_unit = input("digite a nova unidade de medida do insumo: ")
+                    input_obj = Input.recover_input()
+                    if input_obj:
+                        new_unit = input("digite a nova unidade de medida do insumo: ")
+                        input_obj.edit_input("unit", new_unit)
                 case _:
                     print("Digite uma opção valida")
