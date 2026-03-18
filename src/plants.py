@@ -5,6 +5,7 @@ class Plantation:
     def __init__(self,crop_type,area,planting_date,status,plantation_id = None, harvest_date = None):
         self.plantation_id = plantation_id
         self.crop_type = crop_type
+
         self.area = area
         self.planting_date = planting_date
         self.harvest_date = harvest_date
@@ -67,3 +68,4 @@ crops = {
     "berinjela": 110,
     "cana_de_acucar": 365
 }
+
