@@ -78,7 +78,9 @@ class Animal:
                     Animal.print_all_animals()
 
                 case 4:
-                    pass
+                    animal = Animal.recover_animal()
+                    if animal:
+                        animal.view_animal()
                 
                 case _:
                     print("Digite uma opção valida")
