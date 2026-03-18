@@ -101,7 +101,6 @@ class Plantation:
                 case 1:
                     Plantation.create_plantation()
 
-
                 case 2:
                     Plantation.print_all_plantations()
 
@@ -119,7 +118,18 @@ class Plantation:
                     pass
 
                 case 7:
-                    pass
+                    all_plantations = view_datas("plants.json")
+                    crop_type = input("Digite o tipo de cultura para buscar: ").strip().lower()
+                    id_plantation = int(input("Digite o ID da plantação para buscar: "))
+
+                    for plantation in all_plantations:
+                        if plantation["crop_type"] == crop_type or plantation["plantation_id"] == id_plantation:
+                            print(f"{'Campo':<15} | {'Valor':<15}")
+                            print("-" * 32)
+                            for chave, valor in plantation.items():
+                                print(f"{chave:<15} | {valor:<15}")
+                            print("\n")
+
                 case _:
                     print("Digite uma opção valida")
 
