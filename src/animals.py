@@ -1,4 +1,4 @@
-from files import generate_id,write_file,print_formatted_data
+from files import *
 
 class Animal:
     def __init__(self,specie, age, weight, status,animal_id = None):
@@ -30,6 +30,23 @@ class Animal:
         
         animal = cls(specie, age, weight, status, animal_id)
         write_file("animals.json", animal.__dict__)
+
+    @classmethod
+    def recover_animal(cls):
+        id = int(input("Digite o ID do animal: "))
+        animal_data = recover_obj_data("animals.json", id, "animal_id")
+
+        if animal_data:
+            return cls(
+                animal_data["specie"],
+                animal_data["age"],
+                animal_data["weight"],
+                animal_data["status"],
+                animal_data["animal_id"]
+            )
+        else:
+            print("ID não encontrado.")
+            return None
 
     @staticmethod
     def print_all_animals():
