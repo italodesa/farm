@@ -63,3 +63,11 @@ def print_formatted_data(path):
         for chave, valor in data.items():
             print(f"{chave:<10} | {valor:<10}")
         print("\n")
+
+def recover_obj_data(a_path, obj_id, id_attribute):
+# Função para recuperar um objeto do arquivo a partir do ID
+    all_data = view_datas(a_path)
+    for obj in all_data:
+        if obj.get(id_attribute) == obj_id:
+            return obj
+    return None
