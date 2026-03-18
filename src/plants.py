@@ -47,6 +47,10 @@ class Plantation:
         write_file("plants.json", plantation.__dict__)
 
     @staticmethod
+    def print_all_plantations():
+        print_formatted_data("plants.json")
+
+    @staticmethod
     def plants_menu():
         while True:
             print("=" * 50)
@@ -68,7 +72,7 @@ class Plantation:
 
 
                 case 2:
-                    pass
+                    Plantation.print_all_plantations()
 
                 case 3:
                     pass
@@ -109,4 +113,3 @@ crops = {
     "berinjela": 110,
     "cana_de_acucar": 365
 }
-
