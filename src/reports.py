@@ -32,3 +32,18 @@ def report_plants():
         status = f"{p['status']}"
 
         print(f"|{id:<7} |{crop_type:10} |{area:8} |{planting_date:15} |{harvest_date:15} |{status:8}")
+
+def report_inputs():
+    inputs = view_datas("inputs.json")
+
+    print("\nRELATÓRIO DE INSUMOS")
+    print(f"\n|{'ID':7} |{'NOME':15} |{'QUANTIDADE':12} |{'CATEGORIA':20}")
+    print("-" * 80)
+
+    for i in inputs:
+        id = i["input_id"]
+        name = i["name"]
+        quantity = f"{i['quantity']} {i['unit']}"
+        category = i["category"]
+
+        print(f"|{id:<7} |{name:15} |{quantity:12} |{category:20}")
