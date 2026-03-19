@@ -72,7 +72,8 @@ class Plantation:
                 plantation_data["area"],
                 plantation_data["planting_date"],
                 plantation_data["status"],
-                plantation_data["plantation_id"]
+                plantation_data["plantation_id"],
+                plantation_data["harvest_date"]
             )
         else:
             print("ID não encontrado.")
