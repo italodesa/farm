@@ -1,4 +1,5 @@
 from files import *
+from movements import register_movement
 
 class Input:
     def __init__(self,name,quantity,unit,category,input_id = None):
@@ -15,6 +16,11 @@ class Input:
         delete_data("inputs.json", self.input_id, "input_id")
         self.quantity += amount
         write_file("inputs.json", self.__dict__)
+        register_movement(
+            "input",
+            self.input_id,
+            f"Adicionado {amount} {self.unit} ao estoque do insumo {self.name}"
+        )
 
     def remove_quantity(self, amount):
         if amount < 0:
@@ -26,6 +32,11 @@ class Input:
         delete_data("inputs.json", self.input_id, "input_id")
         self.quantity -= amount
         write_file("inputs.json", self.__dict__)
+        register_movement(
+            "input",
+            self.input_id,
+            f"Removido {amount} {self.unit} do estoque do insumo {self.name}"
+        )
 
     def edit_input(self, attribute, value):
         delete_data("inputs.json", self.input_id, "input_id")
