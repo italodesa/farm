@@ -82,6 +82,6 @@ def delete_data(a_path, obj_id, id_attribute):
         path = verify(a_path)
         with open(path,"w",encoding="utf-8") as f:
             json.dump(all_data, f, indent=4, ensure_ascii=False)
-            print("Deletado com sucesso.")
+            return "Deletado com sucesso."
     else:
-         print("ID não encontrado. Nenhum dado foi deletado.")
+        return "ID não encontrado. Nenhum dado foi deletado."

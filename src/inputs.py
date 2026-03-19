@@ -128,7 +128,7 @@ class Input:
 
                 case 4:
                     id = int(input("Digite o ID do insumo a ser removido: "))
-                    delete_data("inputs.json", id,"input_id")
+                    print(delete_data("inputs.json", id,"input_id"))
 
                 case 5:
                     input_obj = Input.recover_input()

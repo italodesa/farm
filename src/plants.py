@@ -111,7 +111,7 @@ class Plantation:
 
                 case 4:
                     id = int(input("Digite o ID da plantação a ser deletada: "))
-                    delete_data("plants.json", id, "plantation_id")
+                    print(delete_data("plants.json", id, "plantation_id"))
 
                 case 5:
                     pass
