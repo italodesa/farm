@@ -142,30 +142,19 @@ class Plantation:
                 print("=" * 50)
                 print(" " * 15 + "Editar plantação" + " " * 15 )
                 print("=" * 50)
-                print("[1] Editar tipo de cultura\n[2] Editar área\n[3] Editar " \
-                "data de plantio\n[4] Editar status\n[0] Voltar")
+                print("[1] Editar área\n[2] Editar status\n[0] Voltar")
                 asw = int(input(">>> "))
 
                 match asw:
                     case 0:
-                        break
-                    
-                    case 1:
-                        plantation = Plantation.recover_plantation()
-                        new_crop_type = input("Digite o novo tipo de cultura: ")
-                        plantation.edit_plantation("crop_type", new_crop_type)
+                        break                
                         
-                    case 2:
+                    case 1:
                         plantation = Plantation.recover_plantation()
                         new_area = float(input("Digite a nova área: "))
                         plantation.edit_plantation("area", new_area)
 
-                    case 3:
-                        plantation = Plantation.recover_plantation()
-                        new_planting_date = input("Digite a nova data de plantio: ")
-                        plantation.edit_plantation("planting_date", new_planting_date)
-
-                    case 4:
+                    case 2:
                         plantation = Plantation.recover_plantation()
                         new_status = input("Digite o novo status (planted, harvested, rotated, inactive): ")
                         plantation.edit_plantation("status", new_status)
