@@ -1,5 +1,6 @@
 from files import *
 from datetime import datetime, timedelta
+from movements import register_movement
 
 class Plantation:
     def __init__(self,crop_type,area,planting_date,status,plantation_id = None, harvest_date = None):
@@ -165,8 +166,14 @@ class Plantation:
 
                     case 4:
                         plantation = Plantation.recover_plantation()
-                        new_status = input("Digite o novo status: ")
+                        new_status = input("Digite o novo status (planted, harvested, rotated, inactive): ")
                         plantation.edit_plantation("status", new_status)
+                        if plantation.status == "harvested":
+                            register_movement(
+                                "plantation",
+                                plantation.plantation_id,
+                                f"Plantação colhida: {plantation.crop_type}"
+                            )
 
                     case _:
                         print("Digite uma opção valida")
