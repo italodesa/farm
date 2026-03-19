@@ -26,7 +26,7 @@ class Animal:
         while True:
             try:
                 specie = input("Digite a especie do animal: ")
-                age = int(input("Digite a idade do animal: "))
+                age = int(input("Digite a idade do animal (em meses): "))
                 weight = float(input("Digite o peso do animal (em kg): "))
                 status = input("Digite o status do animal (active, sold ou death): ")
                 animal_id = generate_id("animals.json","animal_id")
