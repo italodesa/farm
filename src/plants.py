@@ -1,5 +1,6 @@
 from files import *
 from datetime import datetime, timedelta
+from movements import register_movement
 
 class Plantation:
     def __init__(self,crop_type,area,planting_date,status,plantation_id = None, harvest_date = None):
@@ -71,7 +72,8 @@ class Plantation:
                 plantation_data["area"],
                 plantation_data["planting_date"],
                 plantation_data["status"],
-                plantation_data["plantation_id"]
+                plantation_data["plantation_id"],
+                plantation_data["harvest_date"]
             )
         else:
             print("ID não encontrado.")
@@ -109,7 +111,7 @@ class Plantation:
 
                 case 4:
                     id = int(input("Digite o ID da plantação a ser deletada: "))
-                    delete_data("plants.json", id, "plantation_id")
+                    print(delete_data("plants.json", id, "plantation_id"))
 
                 case 5:
                     pass
@@ -140,33 +142,28 @@ class Plantation:
                 print("=" * 50)
                 print(" " * 15 + "Editar plantação" + " " * 15 )
                 print("=" * 50)
-                print("[1] Editar tipo de cultura\n[2] Editar área\n[3] Editar " \
-                "data de plantio\n[4] Editar status\n[0] Voltar")
+                print("[1] Editar área\n[2] Editar status\n[0] Voltar")
                 asw = int(input(">>> "))
 
                 match asw:
                     case 0:
-                        break
-                    
-                    case 1:
-                        plantation = Plantation.recover_plantation()
-                        new_crop_type = input("Digite o novo tipo de cultura: ")
-                        plantation.edit_plantation("crop_type", new_crop_type)
+                        break                
                         
-                    case 2:
+                    case 1:
                         plantation = Plantation.recover_plantation()
                         new_area = float(input("Digite a nova área: "))
                         plantation.edit_plantation("area", new_area)
 
-                    case 3:
+                    case 2:
                         plantation = Plantation.recover_plantation()
-                        new_planting_date = input("Digite a nova data de plantio: ")
-                        plantation.edit_plantation("planting_date", new_planting_date)
-
-                    case 4:
-                        plantation = Plantation.recover_plantation()
-                        new_status = input("Digite o novo status: ")
+                        new_status = input("Digite o novo status (planted, harvested, rotated, inactive): ")
                         plantation.edit_plantation("status", new_status)
+                        if plantation.status == "harvested":
+                            register_movement(
+                                "plantation",
+                                plantation.plantation_id,
+                                f"Plantação colhida: {plantation.crop_type}"
+                            )
 
                     case _:
                         print("Digite uma opção valida")

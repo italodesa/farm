@@ -1,4 +1,5 @@
 from files import *
+from movements import register_movement
 
 class Animal:
     def __init__(self,specie, age, weight, status,animal_id = None):
@@ -26,8 +27,8 @@ class Animal:
             try:
                 specie = input("Digite a especie do animal: ")
                 age = int(input("Digite a idade do animal: "))
-                weight = float(input("Digite o peso do animal: "))
-                status = input("Digite o status do animal: ")
+                weight = float(input("Digite o peso do animal (em kg): "))
+                status = input("Digite o status do animal (active, sold ou death): ")
                 animal_id = generate_id("animals.json","animal_id")
                 break
             except ValueError:
@@ -117,13 +118,16 @@ class Animal:
 
                     case 3:
                         animal = Animal.recover_animal()
-                        new_weight = float(input("Digite o novo peso: "))
+                        new_weight = float(input("Digite o novo peso (em kg): "))
                         animal.edit_animal("weight", new_weight)
 
                     case 4:
                         animal = Animal.recover_animal()
-                        new_status = input("Digite o novo status: ")
+                        new_status = input("Digite o novo status (active, sold ou death): ")
                         animal.edit_animal("status", new_status)
+                        if animal.status == "sold":
+                            register_movement("animal", animal.animal_id, f"sold animal:" \
+                            f" {animal.specie}")
 
                     case _:
                         print("Digite uma opção valida")
