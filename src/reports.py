@@ -91,3 +91,10 @@ def general_report():
     report_text = "\n".join(report_lines)
 
     return report_text
+
+def general_cli_report():
+    print("\nRELATÓRIO GERAL")
+    report_animals()
+    report_plants()
+    report_inputs()
+    key = input("\nPressione Enter para voltar ao menu...")
