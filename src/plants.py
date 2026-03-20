@@ -1,6 +1,7 @@
 from files import *
 from datetime import datetime, timedelta
 from movements import register_movement
+from reports import report_plants
 
 class Plantation:
     def __init__(self,crop_type,area,planting_date,status,plantation_id = None, harvest_date = None):
@@ -114,7 +115,7 @@ class Plantation:
                     print(delete_data("plants.json", id, "plantation_id"))
 
                 case 5:
-                    pass
+                    report_plants()
 
                 case 6:
                     pass
