@@ -118,7 +118,14 @@ class Plantation:
                     report_plants()
 
                 case 6:
-                    pass
+                    all_movements = view_datas("movements.json")
+                    for movement in all_movements:
+                        if movement.get("type") == "plantation":
+                            print(f"{'Campo':<15} | {'Valor':<15}")
+                            print("-" * 32)
+                            for chave, valor in movement.items():
+                                print(f"{chave:<15} | {valor:<15}")
+                            print("\n")
 
                 case 7:
                     all_plantations = view_datas("plants.json")
