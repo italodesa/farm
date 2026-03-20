@@ -1,6 +1,7 @@
 from animals import Animal
 from plants import Plantation  
 from inputs import Input
+from reports import reports_menu
 
 while True:
     print("=" * 50)
@@ -24,7 +25,7 @@ while True:
                 Input.inputs_menu()
 
             case 4:
-                pass
+                reports_menu()
 
             case _:
                 print("Digite uma opção valida")
