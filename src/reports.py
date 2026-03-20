@@ -92,6 +92,16 @@ def general_report():
 
     return report_text
 
+def save_report():
+    report_text = general_report()
+
+    path = verify("report.txt")
+
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(report_text)
+
+    print("\nRelatório salvo com sucesso!")
+
 def general_cli_report():
     print("\nRELATÓRIO GERAL")
     report_animals()
