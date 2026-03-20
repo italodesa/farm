@@ -108,3 +108,30 @@ def general_cli_report():
     report_plants()
     report_inputs()
     key = input("\nPressione Enter para voltar ao menu...")
+
+def reports_menu():
+    while True:
+        try:
+            print("=" * 50)
+            print(" " * 15 + "Relatórios" + " " * 15 )
+            print("=" * 50)
+            print("[1] Ver relatório geral\n[2] Salvar relatório geral\n[0] Voltar")
+
+            asw = int(input(">>> "))
+
+            match asw:
+                case 0:
+                    break
+
+                case 1:
+                    general_cli_report()
+
+                case 2:
+                    print("ATENÇÂO: Esse relatorio não salva as movimentações," \
+                    "apenas os dados atuais de animais, plantações e insumos.")
+                    save_report()
+
+                case _:
+                    print("Digite uma opção valida")
+        except ValueError:
+            print("Entrada inválida. Por favor, tente novamente.")
