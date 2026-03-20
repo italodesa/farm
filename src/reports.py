@@ -1,4 +1,5 @@
 from files import *
+from datetime import datetime
 
 def report_animals():
     animals = view_datas("animals.json")
@@ -47,3 +48,46 @@ def report_inputs():
         category = i["category"]
 
         print(f"|{id:<7} |{name:15} |{quantity:12} |{category:20}")
+
+def general_report():
+    animals = view_datas("animals.json")
+    plantations = view_datas("plants.json")
+    inputs = view_datas("inputs.json")
+
+    report_lines = []
+
+    report_lines.append("RELATÓRIO GERAL DA FAZENDA")
+    report_lines.append(f"Gerado em: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    report_lines.append("=" * 60)
+
+    # ANIMAIS
+    report_lines.append("\nANIMAIS")
+    for a in animals:
+        report_lines.append(
+            f"ID: {a['animal_id']} | Espécie: {a['specie']} | Status: {a['status']}"
+        )
+
+    # PLANTAÇÕES
+    report_lines.append("\nPLANTAÇÕES")
+    for p in plantations:
+        report_lines.append(
+            f"ID: {p['plantation_id']} | Cultura: {p['crop_type']} | Data de Plantio: {p['planting_date']} | Data de Colheita: {p['harvest_date']} | Status: {p['status']}"
+        )
+
+    # INSUMOS
+    report_lines.append("\nINSUMOS")
+    for i in inputs:
+        report_lines.append(
+            f"ID: {i['input_id']} | Nome: {i['name']} | Quantidade: {i['quantity']} {i['unit']}"
+        )
+
+    report_lines.append("\n" + "=" * 60)
+    report_lines.append("TOTAIS")
+
+    report_lines.append(f"Total de animais: {len(animals)}")
+    report_lines.append(f"Total de plantações: {len(plantations)}")
+    report_lines.append(f"Total de insumos: {len(inputs)}")
+
+    report_text = "\n".join(report_lines)
+
+    return report_text
